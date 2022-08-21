@@ -1,28 +1,28 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: elasticsearch
-  namespace: argocd
-spec:
-  destination:
-    namespace: logs
-    server: 'https://kubernetes.default.svc'
-  source:
-    repoURL: 'https://helm.elastic.co'
-    targetRevision: 7.17.1
-    chart: elasticsearch
-    helm:
-      parameters:
-        - name: resources.requests.cpu
-          value: 100m
-        - name: resources.limits.cpu
-          value: 1000m
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: elasticsearch
+#   namespace: argocd
+# spec:
+#   destination:
+#     namespace: logs
+#     server: 'https://kubernetes.default.svc'
+#   source:
+#     repoURL: 'https://helm.elastic.co'
+#     targetRevision: 7.17.1
+#     chart: elasticsearch
+#     helm:
+#       parameters:
+#         - name: resources.requests.cpu
+#           value: 100m
+#         - name: resources.limits.cpu
+#           value: 1000m
 
-  project: default
+#   project: default
 
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
