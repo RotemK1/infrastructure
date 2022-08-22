@@ -17,7 +17,7 @@ spec:
             prometheus.io/port: "10254"
            
           metrics:
-            enabled: true
+            enabled: false
             serviceMonitor:
               additionalLabels:
                 release: prometheous 
