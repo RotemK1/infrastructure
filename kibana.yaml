@@ -1,31 +1,31 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: kibana
-#   namespace: argocd
-# spec:
-#   destination:
-#     namespace: logs
-#     server: 'https://kubernetes.default.svc'
-#   source:
-#     repoURL: 'https://helm.elastic.co'
-#     targetRevision: 7.17.3
-#     chart: kibana
-#     helm:
-#       values: |
-#         resources:
-#           requests:
-#             cpu: "100m"
-#           limits:
-#             cpu: "1000m"
-#         service:
-#           type: "LoadBalancer"
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kibana
+  namespace: argocd
+spec:
+  destination:
+    namespace: logs
+    server: 'https://kubernetes.default.svc'
+  source:
+    repoURL: 'https://helm.elastic.co'
+    targetRevision: 7.17.3
+    chart: kibana
+    helm:
+      values: |
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            cpu: "1000m"
+        service:
+          type: "LoadBalancer"
 
-#   project: default
+  project: default
 
-#   syncPolicy:
-#     automated:
-#       prune: true
-#       selfHeal: true
-#     syncOptions:
-#       - CreateNamespace=true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
