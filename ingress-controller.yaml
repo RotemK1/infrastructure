@@ -1,42 +1,42 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: ingress-nginx
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: 'https://kubernetes.github.io/ingress-nginx'
-    targetRevision: 4.2.0
-    chart: ingress-nginx
-    helm:
-      values: |
-        controller:
-          podAnnotations:
-            prometheus.io/scrape: "true"
-            prometheus.io/port: "10254"
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: ingress-nginx
+#   namespace: argocd
+# spec:
+#   project: default
+#   source:
+#     repoURL: 'https://kubernetes.github.io/ingress-nginx'
+#     targetRevision: 4.2.0
+#     chart: ingress-nginx
+#     helm:
+#       values: |
+#         controller:
+#           podAnnotations:
+#             prometheus.io/scrape: "true"
+#             prometheus.io/port: "10254"
            
-          metrics:
-            enabled: false
-            serviceMonitor:
-              additionalLabels:
-                release: prometheous 
-              enabled: true        
-            service:
-              annotations:
-                prometheus.io/port: "10254"
-                prometheus.io/scrape: "true"    
+#           metrics:
+#             enabled: false
+#             serviceMonitor:
+#               additionalLabels:
+#                 release: prometheous 
+#               enabled: true        
+#             service:
+#               annotations:
+#                 prometheus.io/port: "10254"
+#                 prometheus.io/scrape: "true"    
         
-          extra_args:
-            enable-ssl-passthrough: true
+#           extra_args:
+#             enable-ssl-passthrough: true
             
-  destination: 
-    namespace: ingress-nginx
-    server: 'https://kubernetes.default.svc'
+#   destination: 
+#     namespace: ingress-nginx
+#     server: 'https://kubernetes.default.svc'
   
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
