@@ -20,7 +20,7 @@ spec:
             enabled: true
             serviceMonitor:
               additionalLabels:
-                release: prometheus 
+                release: kube-prometheus-stack
               enabled: true        
             service:
               annotations:
