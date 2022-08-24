@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert
+spec:
+  dnsNames:
+    - rotemhostname.ddns.net
+  secretName: app-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
