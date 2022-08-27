@@ -15,7 +15,7 @@ spec:
     targetRevision: 34.1.1
     helm:
       skipCrds: true
-      valuefile:
+      valueFile:
         - ingress-grafana-test.yaml
 
 
