@@ -15,8 +15,11 @@ spec:
     targetRevision: 34.1.1
     helm:
       skipCrds: true
-      valueFile:
-        - ingress-grafana-test.yaml
+      values: |
+        grafana.ini:
+          server:
+            domain: rotemhostname.ddns.net
+            root_url: http://rotemhostname.ddns.net/grafana/
 
 
     chart: kube-prometheus-stack
