@@ -17,7 +17,7 @@ spec:
       skipCrds: true
       valuefile:
         - ingress-grafana-test.yaml
- 
+
 
     chart: kube-prometheus-stack
   syncPolicy:
